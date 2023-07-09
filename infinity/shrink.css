@@ -1,0 +1,61 @@
+@media (max-width:480px) {
+    .photo{
+        padding: 30px;
+        background-color: rgb(25 25 40);
+        margin-top: 60px;
+        margin-left: 40px;
+        margin-right: 40px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+      }
+      
+      .photo img{
+        width: 400px;
+        height: 380px;
+        object-fit: cover;
+        filter: grayscale(100%) contrast(120%);
+        box-shadow: 20px 25px 25px 0 rgba(195, 195, 195, 0.15);
+        display: flex;
+        transition: all .5s cubic-bezier(0.645, 0.045, 0.355, 1);
+        margin-top: -10px;
+        justify-content: right;
+    
+      }
+      
+      .photo:hover img{
+        box-shadow: 1px 1px 10px 0 rgba(0,0,0,.1);
+      }
+      
+      
+      
+      .photo:hover img,
+      .photo:hover .glow-wrap{
+        margin-top: 0;
+      }
+    
+      .photo-text{
+        color: white;
+        width: 50%;
+        margin-top: 20px;
+        font-size: var(--aboutFS);
+      }
+      .who{
+        font-size: 40px;
+      }
+      .photo p{
+        font-size: 20px;
+      }
+    
+      .hidden {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.5s ease-in, transform 0.5s ease-in;
+      }
+      .visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+}

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="contact.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    
+</head>
+<body>
+
+    <div class="content-navbar">
+        <button class="hamburger">&#9776;</button>
+        <ul class="nav-links">
+            <li><a href="../index.html" id="navbar-home">home</a></li>
+           <li><a  href="../index.html" id="navbar-about" onclick="scrollToDescription()">about</a></li>
+            <li><a  href="../index.html" id="navbar-work" onclick="scrollToWork()">work</a></li>
+            <li><a id="navbar-contact">contact</a></li>
+        </ul>
+    </div>
+
+
+    <div class="container">
+        <h1 class="brand"><span>Infinity</span> Transportation</h1>
+        <div class="wrapper">
+          <div class="company-info">
+            <h3>Contact Us</h3>
+            <ul>
+              <li><i class="fa-solid fa-location-dot" style="color: #005eff;"></i></i>370 Oakley Drive</li>
+              <li><i id="phone-icon" class="fa-solid fa-phone-volume" style="color: #1f9d06;"></i> (615) 516-4841</li>
+              <li><i class="fa-solid fa-at" style="color: #ffffff;"> </i> ufarhod@gmail.com</li>
+            </ul>
+          </div>
+          <div class="contact">
+            <h3>Email Us</h3>
+            <div class="alert">Your message has been sent successfully</div>
+            <form id="contactForm">
+              <p>
+                <label>Name</label>
+                <input type="text" name="name" id="name" required>
+              </p>
+              <p>
+                <label>Company (optional)</label>
+                <input type="text" name="company (optional)" id="company">
+              </p>
+              <p>
+                <label>Email Address</label>
+                <input type="email" name="email" id="email" required>
+              </p>
+              <p>
+                <label>Phone Number</label>
+                <input type="text" name="phone" id="phone" required>
+              </p>
+              <p class="full">
+                <label>Message</label>
+                <textarea name="message" rows="5" id="message" required></textarea>
+              </p>
+              <p class="full">
+                <button id="submit" type="submit">Submit</button>
+              </p>
+            </form>
+          </div>
+        </div>
+      </div>
+
+    <!-- <div id="contact-us">
+        <div id="contact-info">
+            <div id="info-links">
+                <h1>Infinity Transportation</h1>
+                <ul id="contact-items">
+                    <li class="link"><i id="phone-icon" class="fa-solid fa-phone-volume" style="color: #1f9d06;"></i>
+                    +1 (615) 516-4841</li>
+                    <li><i class="fa-solid fa-at" style="color: #ffffff;"></i> infinitytransportation@gmail.com</li>
+                    <li><i class="fa-solid fa-location-dot" style="color: #005eff;"></i> 370 Oakley Drive, TN 37211</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="user-input">
+            <h1>Email Us</h1>
+
+            <form id="contact-form">
+                <label>Name</label>
+                <input type="text" name="name" id="name">
+
+                <label>Email</label>
+                <input type="email" name="name" id="name">
+
+                <label>Company (optional)</label>
+                <input type="text" name="name" id="name">
+
+                <label>Message</label>
+                <textarea name="message" rows="5"></textarea>
+            </form>
+        </div>
+    </div> -->
+
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { getDatabase, ref, set, push } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-database.js"
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js";
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+    
+      // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      const firebaseConfig = {
+        apiKey: "AIzaSyBnIv8I06zhLCJtfb-9qVuMpyjRd8PuAMo",
+        authDomain: "user-message-392123.firebaseapp.com",
+        databaseURL: "https://user-message-392123-default-rtdb.firebaseio.com",
+        projectId: "user-message-392123",
+        storageBucket: "user-message-392123.appspot.com",
+        messagingSenderId: "930679670139",
+        appId: "1:930679670139:web:e06fa95fc20e3d5f9b69de",
+        measurementId: "G-EX08V7V96X"
+      };
+    
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const database = getDatabase()
+
+
+
+      var messagesRef = ref(database, 'messages');
+
+      document.getElementById("contactForm").addEventListener('submit', submitForm);
+
+
+      function submitForm(e){
+        e.preventDefault();
+
+        var name = getInputValue("name");
+        var company = getInputValue("company");
+        var email = getInputValue("email");
+        var phone = getInputValue("phone");
+        var message = getInputValue("message");
+        
+        // Save message
+        saveMessage(name, company, email, phone, message)
+
+        // Show alert
+        document.querySelector('.alert').style.display = 'block'
+
+        // Hide alert after 3 seconds
+        setTimeout(function(){  
+          document.querySelector('.alert').style.display = 'none';
+        }, 3000)
+
+        // Clears/resets form input boxes
+        document.getElementById('contactForm').reset()
+
+
+      }
+
+      function getInputValue(id){
+        return document.getElementById(id).value
+      }
+
+
+      function saveMessage(name, company, email, phone, message){
+        var newMessageRef = push(messagesRef)
+        set(newMessageRef, {
+          name: name,
+          company: company,
+          email: email,
+          phone: phone,
+          message: message
+        })
+      }
+
+
+
+    </script>
+    
+
+
+</body>
+</html>
