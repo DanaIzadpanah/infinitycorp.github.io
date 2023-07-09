@@ -4,10 +4,10 @@ Project Overview
 Welcome to the repository of a robust and innovative web project meticulously crafted by Dana Izadpanah and Bekhzod Usmanov. This project is the culmination of extensive stakeholder engagement, careful attention to detail, and an unwavering dedication to creating an outstanding web solution that meets and exceeds the needs of our client.
 
 Meet the Team
-Dana Izadpanah - LinkedIn Profile
+Dana Izadpanah - [LinkedIn Profile](https://www.linkedin.com/in/dana-izadpanah/)
 A tenacious and focused web developer, Dana has showcased an exceptional ability to meet challenging project requirements and deliver solutions of the highest quality. Her talent lies in navigating complex project specifications and producing compelling designs that not only meet but surpass client expectations.
 
-Bekhzod Usmanov - LinkedIn Profile
+Bekhzod Usmanov - [LinkedIn Profile](https://www.linkedin.com/in/begzod-usmanovv/)
 With a keen eye for detail and a flair for problem-solving, Bekhzod has proven himself a capable and reliable developer. His expertise lies in understanding and implementing advanced features, ensuring that the final product is not only functional but also innovative and user-friendly.
 
 Project Journey
